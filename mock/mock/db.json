@@ -1,0 +1,136 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin",
+      "role": "admin",
+      "createdAt": "2026-02-15T12:00:00Z",
+      "favourCities": []
+    },
+    {
+      "id": "2",
+      "username": "sinonomeai",
+      "password": "7355608",
+      "role": "user",
+      "createdAt": "2026-02-15T12:00:00Z",
+      "favourCities": [
+        {
+          "id": "101010100",
+          "name": "北京",
+          "country": "中国",
+          "addedAt": "2026-02-27T08:40:27.316Z"
+        },
+        {
+          "id": "101190101",
+          "name": "南京",
+          "country": "中国",
+          "addedAt": "2026-02-27T08:40:34.930Z"
+        },
+        {
+          "id": "101200101",
+          "name": "武汉",
+          "country": "中国",
+          "addedAt": "2026-03-10T01:21:14.037Z"
+        }
+      ]
+    },
+    {
+      "id": "1771347240235",
+      "username": "yustkina",
+      "password": "7355608",
+      "role": "user",
+      "createdAt": "2026-02-17T16:54:00.235Z",
+      "favourCities": [
+        {
+          "id": "101010100",
+          "name": "北京",
+          "country": "中国",
+          "addedAt": "2026-02-24T15:28:43.385Z"
+        },
+        {
+          "id": "101020100",
+          "name": "上海",
+          "country": "中国",
+          "addedAt": "2026-02-24T16:19:29.489Z"
+        },
+        {
+          "id": "101040100",
+          "name": "重庆",
+          "country": "中国",
+          "addedAt": "2026-02-24T16:27:50.803Z"
+        },
+        {
+          "id": "101270101",
+          "name": "成都",
+          "country": "中国",
+          "addedAt": "2026-03-10T06:43:12.117Z"
+        }
+      ]
+    },
+    {
+      "id": "1772285681233",
+      "username": "yustkina233",
+      "password": "7355608",
+      "role": "user",
+      "createdAt": "2026-02-28T13:34:41.233Z",
+      "favourCities": [
+        {
+          "id": "101020100",
+          "name": "上海",
+          "country": "中国",
+          "addedAt": "2026-03-10T06:48:58.832Z"
+        },
+        {
+          "id": "101010100",
+          "name": "北京",
+          "country": "中国",
+          "addedAt": "2026-03-10T06:49:07.758Z"
+        },
+        {
+          "id": "101190101",
+          "name": "南京",
+          "country": "中国",
+          "addedAt": "2026-03-10T06:49:17.896Z"
+        },
+        {
+          "id": "101270101",
+          "name": "成都",
+          "country": "中国",
+          "addedAt": "2026-03-10T06:49:29.902Z"
+        }
+      ]
+    },
+    {
+      "id": "1772350187925",
+      "username": "yustkina23355",
+      "password": "7355608",
+      "role": "user",
+      "createdAt": "2026-03-01T07:29:47.925Z",
+      "favourCities": []
+    },
+    {
+      "id": "1772350217414",
+      "username": "yustkina233gs",
+      "password": "aaa",
+      "role": "user",
+      "createdAt": "2026-03-01T07:30:17.414Z",
+      "favourCities": []
+    },
+    {
+      "id": "1773565392795",
+      "username": "yustkinaqwe",
+      "password": "7355608",
+      "role": "user",
+      "createdAt": "2026-03-15T09:03:12.795Z",
+      "favourCities": [
+        {
+          "id": "101010100",
+          "name": "北京",
+          "country": "中国",
+          "addedAt": "2026-03-15T09:04:54.582Z"
+        }
+      ]
+    }
+  ]
+}
