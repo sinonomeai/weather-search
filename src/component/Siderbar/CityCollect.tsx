@@ -3,10 +3,18 @@ import { useUserData } from "../../stores/userData"
 import { useCityData } from "../../stores/cityName"
 import { useWeather } from "../../hooks/useWeather"
 import { useEffect } from "react"
+import { useQueryClient } from "@tanstack/react-query"
 export const CityCollect = () => {
     const { userData, setUserData } = useUserData()
     const { cityData, setCityData } = useCityData()
-    const { data: weatherData, refetch,isLoading } = useWeather(cityData)
+    const { data: weatherData, refetch } = useWeather(cityData)
+    const queryClient = useQueryClient()
+    useEffect(() => {
+        const cachedData = queryClient.getQueryData(["weather", cityData])
+        if (!cachedData) {
+            refetch()
+        }
+    }, [cityData])
 
     // 根据用户登录和天气数据状态，显示相应提示
     if (!userData) {
@@ -21,11 +29,8 @@ export const CityCollect = () => {
             </div>
         )
     }
-    useEffect(() => {
-        refetch()
-    }, [cityData])
-    // 点击收藏城市更新最新城市数据
 
+    // 点击收藏城市更新最新城市数据
     const handleCity = (cityName: string) => {
         setCityData(cityName)
     }
@@ -35,13 +40,10 @@ export const CityCollect = () => {
     const handleAdd = async () => {
         if (!weatherData) {
             message.error("请先搜索城市")
-            return {
-                success: false,
-                message: "未搜索城市",
-            }
+            return
         }
-
-        if (cities.find((city: any) => city.name === cityInfo.name)) {
+        const isCollected = cities.find((city: any) => city?.name === cityInfo?.name)
+        if (isCollected) {
             message.error("已收藏该城市")
             return {
                 message: "该城市已收藏",
@@ -140,14 +142,10 @@ export const CityCollect = () => {
                     </div>
                     <div className='flex justify-center'>
                         <div className='max-w-[150px] min-w-[100px] '>
-                            <Button
-                                color='primary'
-                                variant='solid'
-                                block='true'
-                                onClick={handleAdd}>
+                            <Button color='primary' variant='solid' block onClick={handleAdd}>
                                 {weatherData ? (
                                     <span className='text-[clamp(10px,1vw,14px)]'>
-                                        添加当前城市({cityInfo.name})
+                                        添加当前城市({cityInfo?.name})
                                     </span>
                                 ) : (
                                     <span className='text-[clamp(13px,1vw,16px)]'>

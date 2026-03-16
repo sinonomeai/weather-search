@@ -1,13 +1,22 @@
 import { SearchBox } from "../component/SearchBox/SearchBox"
 import { WeatherDay } from "../component/WeatherDay/WeatherDay"
 import { WeatherNow } from "../component/WeatherNow/WeatherNow"
-import { WeatherFuture } from "../component/WeatherFuther/WeatherFuture"
+import { WeatherFuture } from "../component/WeatherFuture/WeatherFuture"
 import { CityCollect } from "../component/Siderbar/CityCollect"
 import { HomeLogin } from "../component/Siderbar/HomeLogin"
 import { ThemeChange } from "../component/Siderbar/ThemeChange"
 import { Translation } from "../component/Siderbar/Translation"
+import { useEffect } from "react"
+import { useUserData } from "../stores/userData"
 
 export const Home = () => {
+    const { setUserData } = useUserData()
+    useEffect(() => {
+        const storeUserInfo = localStorage.getItem("userInfo")
+        if (storeUserInfo) {
+            setUserData(JSON.parse(storeUserInfo))
+        }
+    }, [])
     return (
         // 页面盒子
         <div className='w-full min-h-screen flex'>

@@ -6,7 +6,14 @@
       "password": "admin",
       "role": "admin",
       "createdAt": "2026-02-15T12:00:00Z",
-      "favourCities": []
+      "favourCities": [
+        {
+          "id": "101040100",
+          "name": "重庆",
+          "country": "中国",
+          "addedAt": "2026-03-16T13:01:43.939Z"
+        }
+      ]
     },
     {
       "id": "2",
@@ -116,6 +123,21 @@
       "role": "user",
       "createdAt": "2026-03-01T07:30:17.414Z",
       "favourCities": []
+    },
+    {
+      "id": "1773565392795",
+      "username": "yustkinaqwe",
+      "password": "7355608",
+      "role": "user",
+      "createdAt": "2026-03-15T09:03:12.795Z",
+      "favourCities": [
+        {
+          "id": "101010100",
+          "name": "北京",
+          "country": "中国",
+          "addedAt": "2026-03-15T09:04:54.582Z"
+        }
+      ]
     }
   ]
 }

@@ -3,8 +3,14 @@ import { useWeather } from "../../hooks/useWeather"
 
 import { pinyin } from "pinyin-pro"
 export const CityWeather = () => {
-    const {cityData} = useCityData()
-    const { data:weatherData,refetch } = useWeather(cityData)
+    const { cityData } = useCityData()
+    const { data: weatherData, refetch } = useWeather(cityData)
+    const nowData = weatherData?.realtime
+    const cityInfo = weatherData?.city
+    const nameText = pinyin(cityInfo?.name, {
+        toneType: "none",
+        type: "string",
+    })
     if (!weatherData) {
         return (
             <div className='w-full h-60'>
@@ -14,12 +20,7 @@ export const CityWeather = () => {
             </div>
         )
     }
-    const nowData = weatherData.realtime
-    const cityInfo = weatherData.city
-    const nameText = pinyin(cityInfo?.name, {
-        toneType: "none",
-        type: "string",
-    })
+
     return (
         <div>
             <p className='titleCity'>

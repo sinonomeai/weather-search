@@ -4,13 +4,8 @@ import { Input, message } from "antd"
 import { useActionState } from "react"
 import { useFormStatus } from "react-dom"
 import { useUserData } from "../stores/userData"
+import { getUser } from "../api/User"
 
-//模拟请求延迟
-const delay = (ms: number) => {
-    //resolve是一个函数，通过调用可以告诉Promise对象当前操作已经完成，如果不调用,Promise对象会一直处于pending状态。
-    //展开为()=>resolve()
-    return new Promise((resolve) => setTimeout(resolve, ms))
-}
 //提交按钮组件
 const SubmitButton = () => {
     const { pending } = useFormStatus()
@@ -27,81 +22,18 @@ const SubmitButton = () => {
 //登录组件
 export const Login = () => {
     const { setUserData } = useUserData()
-    //实现页面跳转
     const navigate = useNavigate()
-
-    // 登录处理函数
     const handleAction = async (_prevState: any, formData: FormData) => {
-        //_prevState 可以用来获取之前的状态，但在登录场景中我们不需要它，所以用 _prevState 来表示未使用的参数
-        const username = formData.get("username")
-        const password = formData.get("password")
-        //登录用户
-        try {
-            //获取响应对象
-            const res = await fetch("http://localhost:3000/users") //res 是一个 Response 对象，包含响应信息，但不是实际的数据。
-            if(!res.ok){
-                throw new Error("网络请求失败")
-            }
-            //GET 是默认方法，不需要 headers 和 body
-            //解析响应数据
-            const users = await res.json() //users 是解析后的数据，通常是一个数组或对象，取决于服务器返回的数据结构。
-            await delay(2000)
-            //检查用户名和密码是否匹配
-            const user = users.find((u) => u.username === username)
-            if (user) {
-                if (user.password === password && user.username !== "admin") {
-                    console.log(user)
-                    setUserData(user)
-                    navigate(`/${user.id}`)
-                    message.open({
-                        type: "success",
-                        content: `登录成功，欢迎回来${user.username}（づ￣3￣）づ╭❤️～`,
-                    })
-
-                    return {
-                        message: "登录成功",
-                        success: true,
-                    }
-                } else if (user.username === "admin") {
-                    navigate("/admin")
-                    message.open({
-                        type: "success",
-                        content: "管理员登录成功(╹ڡ╹ )",
-                    })
-
-                    return {
-                        message: "管理员登录成功",
-                        success: true,
-                    }
-                } else {
-                    message.open({
-                        type: "error",
-                        content: "密码错误，请稍后重试(￣▽￣)",
-                    })
-                    return {
-                        message: "密码错误",
-                        success: false,
-                    }
-                }
-            } else {
-                message.open({
-                    type: "error",
-                    content: "用户不存在，请稍后重试(っ °Д °;)っ",
-                })
-                return {
-                    message: "用户不存在",
-                    success: false,
-                }
-            }
-        } catch (error) {
-            message.open({
-                type: "error",
-                content: "登录失败 " + error,
-            })
-            return {
-                message: "登录失败 " + error,
-                success: false,
-            }
+        const username = formData.get("username") as string
+        const password = formData.get("password") as string
+        const result = await getUser(username, password)
+        if (result.success) {
+            message.success(result.message)
+            localStorage.setItem("userInfo", JSON.stringify(result.user))
+            setUserData(result.user!) //! 断言非空
+            navigate(result.user?.role === "user" ? `/${result.user.id}` : "/admin")
+        } else {
+            message.error(result.message) // 这里应该执行
         }
     }
 

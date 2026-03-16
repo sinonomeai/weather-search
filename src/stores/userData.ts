@@ -1,7 +1,17 @@
 import { create } from "zustand"
-export const useUserData = create((set) => ({
+interface User {
+        id: number
+        role: string
+        username: string
+        favourCities:string[]
+}
+interface UserStore {
+    userData: User | null
+    setUserData: (data: User | null) => void
+}
+export const useUserData = create<UserStore>((set) => ({
     userData: null,
-    setUserData: (data:string) => {
+    setUserData: (data) => {
         set({ userData: data })
     },
 }))

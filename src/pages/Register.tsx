@@ -3,20 +3,7 @@ import { EyeInvisibleOutlined, EyeTwoTone, UserOutlined } from "@ant-design/icon
 import { Input, message } from "antd"
 import { useActionState } from "react"
 import { useFormStatus } from "react-dom"
-
-//定义用户接口，防止类型不匹配，"报错"
-interface User {
-    username: string
-    password: string
-}
-//模拟请求延迟
-const delay = (ms: number) => {
-    //resolve是一个函数，通过调用可以告诉Promise对象当前操作已经完成，如果不调用,Promise对象会一直处于pending状态。
-    //展开为()=>resolve()
-    return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
-//提交按钮组件
+import { postUser } from "../api/User"
 const SubmitButton = () => {
     const { pending } = useFormStatus()
     return (
@@ -30,102 +17,19 @@ const SubmitButton = () => {
 }
 
 export const Register = () => {
-    const navigate = useNavigate() //只能在组件顶层使用
-    //注册处理函数
+    const navigate = useNavigate()
     const handleAction = async (_prevState: any, formData: FormData) => {
         const username = formData.get("username")
         const password = formData.get("password")
         const confirmPassword = formData.get("confirmPassword")
-        try {
-            //检查用户名是否为空
-            if (username.trim() === "") {
-                message.open({
-                    type: "error",
-                    content: "用户名不能为空￣へ￣",
-                })
-                return {
-                    message: "用户名为空",
-                    success: false,
-                }
-            }
-            if (password.trim() === "") {
-                message.open({
-                    type: "error",
-                    content: "密码不能为空￣へ￣",
-                })
-                return {
-                    message: "密码为空",
-                    success: false,
-                }
-            }
-            //检查用户名是否存在
-            const resCheck = await fetch("http://localhost:3000/users")
-            if (!resCheck.ok) {
-                throw new Error("网络请求失败")
-            }
-            const users: User[] = await resCheck.json()
-            if (users.find((u) => u.username === username)) {
-                message.open({
-                    type: "error",
-                    content: "用户名已存在",
-                })
-                return {
-                    message: "用户名已存在",
-                    success: false,
-                }
-            }
-            //检查两次密码是否一致
-            if (password !== confirmPassword) {
-                message.open({
-                    type: "error",
-                    content: "两次输入密码不一致，请重新输入",
-                })
-                return {
-                    message: "两次输入的密码不一致",
-                    success: false,
-                }
-            }
-            //创建新用户
-            const newUser = {
-                id: Date.now().toString(), //使用时间戳作为简单的唯一ID
-                username: username,
-                password: password,
-                role: "user",
-                createdAt: new Date().toISOString(), //记录创建时间(以ISO格式存储)
-                favourCities: [],
-            }
-            //发送POST请求到服务器
-            const res = await fetch("http://localhost:3000/users", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newUser),
-            })
-            
-            if (!res.ok) {
-                throw new Error("网络请求失败")
-            }
-            await delay(2000)
-
-            message.open({
-                type: "success",
-                content: "注册成功",
-            })
+        const result = await postUser(username, password, confirmPassword)
+        if (result.success) {
+            message.success(result.message)
             navigate("/login")
-            return {
-                message: "注册成功",
-                success: true,
-            }
-        } catch (error) {
-            message.open({
-                type: "error",
-                content: "注册失败 " + error, 
-            })
-            return {
-                message: "注册失败 " + error,
-                success: false,
-            }
+            return
+        } else {
+            message.error(result.message)
+            return
         }
     }
 

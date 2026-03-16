@@ -5,29 +5,25 @@ import { useCityData } from "../../stores/cityName"
 import { useWeather } from "../../hooks/useWeather"
 
 export const SearchBox = () => {
-    const { cityData, setCityData } = useCityData()
+    const { setCityData } = useCityData()
     const [cityName, setCityName] = useState("")
     //解构
     const {
-        data, // 成功时：天气数据
-        isLoading, // 加载中：true/false
-        error, // 失败时：错误对象
         refetch, // 手动触发请求的方法
         isFetching, // 是否正在请求（包括后台）
-        status, // 'loading' | 'error' | 'success'
-    } = useWeather(cityData) // 传入城市名
+    } = useWeather(cityName) // 传入城市名
+    //点击搜索
     const handleSearch = async () => {
         if (!cityName.trim()) {
             message.warning("请输入城市名")
             return
         }
-        setCityData(cityName)
         const result = await refetch()
         if (result.data) {
+            setCityData(cityName)
             message.success(`${cityName}天气数据获取成功(/≧▽≦)/`)
-            return
         } else if (result.error) {
-            message.error(`${cityName}天气数据获取失败〒▽〒`)
+            message.error(result.error.message)
         }
     }
 

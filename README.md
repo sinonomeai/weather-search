@@ -49,10 +49,10 @@
 + 城市收藏（添加/删除/查看）
 + 加载骨架屏及loading动画
 + 刷新按钮
++ 本地保存用户登录状态
 
 ### 待实现功能（逐步实现...〒▽〒 ）
 
-+ 本地保存用户登录状态
 + 移动端适配优化
 + 性能与代码优化
 + 管理员页面
@@ -78,9 +78,8 @@ https://github.com/feliz2077165361-rgb/WeatherSystem-School_Project.git
 + 类型安全检查
 + Canvas 与 Chart.js 的学习
 + tailwind 与 Ant Design 的学习
-+ zustand用错场景，应该用tanstack query 屮
 + 优化组件引入方式
-
++ zustand与tanstack query的应用场景
 
 
 # 小记

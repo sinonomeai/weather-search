@@ -1,6 +1,6 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 export const SiderBar = () => {
-    const navigate = useNavigate()
+    const location = useLocation()
     return (
         <div className='backgroundStyle flex-1 flex flex-col p-[20px]'>
             <div className='mb-[20px]'>
@@ -11,7 +11,7 @@ export const SiderBar = () => {
             <div>
                 <ul className='flex flex-col gap-[16px]'>
                     <li>
-                        <NavLink to='/Admin/dashboard' className='admin-nav'>
+                        <NavLink to='/Admin/dashboard' className={`admin-nav ${location.pathname==="/admin"?"active":""}`}>
                             数据概览
                         </NavLink>
                     </li>
