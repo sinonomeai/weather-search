@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { message } from "antd"
 import { LoadingOutlined } from "@ant-design/icons"
-import { useCityData } from "../../stores/cityName"
+import { useCityData } from "../../stores/cityData"
 import { useWeather } from "../../hooks/useWeather"
 
 export const SearchBox = () => {
@@ -30,15 +30,12 @@ export const SearchBox = () => {
     return (
         <div
             className='backgroundStyle h-30 w-9/10 flex flex-wrap justify-center items-center  max-md:flex-col max-md:h-36
-    '
-            style={{
-                background: "var(--card-gradient)",
-            }}>
-            <div className='min-md:flex-1 flex flex-col justify-center pl-5 max-md:w-full max-md:pl-10'>
+    '>
+            <div className='md:flex-1 flex flex-col justify-center pl-10 w-full max-md:pl-5'>
                 <p className='text-[20px] tracking-[0.1em]'>城市查询</p>
                 <p className='text-[#b4c0d9] text-[14px] '>输入城市或坐标，获取最新天气</p>
             </div>
-            <div className='min-md:flex-3 flex gap-3 pr-10 pt-4 max-md:w-full max-md:pl-10'>
+            <div className='md:flex-3 flex gap-3 pr-5 pt-4 w-full max-md:pl-5'>
                 <div className='relative flex-1'>
                     <input
                         type='text'
@@ -68,7 +65,7 @@ export const SearchBox = () => {
                 </div>
 
                 <button className='buttonStyle' onClick={handleSearch} disabled={isFetching}>
-                    {isFetching ? <LoadingOutlined style={{fontSize:25}}/> : "搜索"}
+                    {isFetching ? <LoadingOutlined style={{ fontSize: 24 }} /> : "搜索"}
                 </button>
             </div>
         </div>

@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles/index.css'
 import './styles/admin.css'
+import "./styles/mobile.css"
 import App from './App.tsx'
 import "qweather-icons/font/qweather-icons.css"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"

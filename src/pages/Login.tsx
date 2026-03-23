@@ -21,17 +21,24 @@ const SubmitButton = () => {
 
 //登录组件
 export const Login = () => {
-    const { setUserData } = useUserData()
+    const { userData,setUserData } = useUserData()
     const navigate = useNavigate()
     const handleAction = async (_prevState: any, formData: FormData) => {
         const username = formData.get("username") as string
         const password = formData.get("password") as string
         const result = await getUser(username, password)
+        console.log(userData)
         if (result.success) {
             message.success(result.message)
-            localStorage.setItem("userInfo", JSON.stringify(result.user))
             setUserData(result.user!) //! 断言非空
-            navigate(result.user?.role === "user" ? `/${result.user.id}` : "/admin")
+            console.log(userData)
+            if(result.user?.role === "admin"){
+                navigate("/admin")
+            }else if(result.user?.role === "user"){
+                navigate(`/${result.user.id}`)
+            }else{
+                navigate("/")
+            }
         } else {
             message.error(result.message) // 这里应该执行
         }

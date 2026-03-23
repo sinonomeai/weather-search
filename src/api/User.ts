@@ -1,5 +1,3 @@
-import { message } from "antd"
-
 export const getUser = async (userName: string, password: string) => {
     try {
         const res = await fetch("http://localhost:3000/users")

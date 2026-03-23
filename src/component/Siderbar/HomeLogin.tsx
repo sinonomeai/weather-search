@@ -13,7 +13,7 @@ export const HomeLogin = () => {
         navigate("/")
     }
     return (
-        <div className='h-1/10 w-full text-center'>
+        <div className='h-18 w-full text-center'>
             {userData ? (
                 <div className='flex flex-col gap-2'>
                     <h1 className='text-[20px]'>{userData.username}</h1>

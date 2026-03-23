@@ -3,7 +3,7 @@ import { router } from "./router/Router"
 function App() {
     return (
         <>
-            <RouterProvider router={router} />
+            <RouterProvider router={router()} />
         </>
     )
 }

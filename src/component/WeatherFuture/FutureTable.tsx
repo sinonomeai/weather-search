@@ -1,9 +1,9 @@
-import { useCityData } from "../../stores/cityName"
+import { useCityData } from "../../stores/cityData"
 import { useWeather } from "../../hooks/useWeather"
 
 export const FutureTable = () => {
-    const {cityData} = useCityData()
-    const { data:weatherData } = useWeather(cityData)
+    const { cityData } = useCityData()
+    const { data: weatherData } = useWeather(cityData)
     if (!weatherData) {
         return (
             <div className='w-full h-full p-10 flex items-center justify-center'>

@@ -1,4 +1,4 @@
-import { useCityData } from "../../stores/cityName"
+import { useCityData } from "../../stores/cityData"
 import { useWeather } from "../../hooks/useWeather"
 import { IconFont } from "./IconFont"
 import { Line } from "react-chartjs-2"

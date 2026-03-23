@@ -1,10 +1,10 @@
 import { TempChart } from "./TempChart"
 import { Skeleton } from "antd"
 import { useWeather } from "../../hooks/useWeather"
-import { useCityData } from "../../stores/cityName"
+import { useCityData } from "../../stores/cityData"
 export const WeatherDay = () => {
-    const {cityData} = useCityData()
-    const {isFetching} = useWeather(cityData)
+    const { cityData } = useCityData()
+    const { isFetching } = useWeather(cityData)
     if (isFetching) {
         return (
             <div className='backgroundStyle h-150 w-9/10 p-5'>

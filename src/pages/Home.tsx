@@ -1,45 +1,45 @@
 import { SearchBox } from "../component/SearchBox/SearchBox"
+import { Menu } from "../component/Siderbar/Mobile/Menu"
+import { FloatingBall } from "../component/Siderbar/Mobile/FloatingBall"
 import { WeatherDay } from "../component/WeatherDay/WeatherDay"
 import { WeatherNow } from "../component/WeatherNow/WeatherNow"
 import { WeatherFuture } from "../component/WeatherFuture/WeatherFuture"
-import { CityCollect } from "../component/Siderbar/CityCollect"
-import { HomeLogin } from "../component/Siderbar/HomeLogin"
-import { ThemeChange } from "../component/Siderbar/ThemeChange"
-import { Translation } from "../component/Siderbar/Translation"
-import { useEffect } from "react"
-import { useUserData } from "../stores/userData"
+import { Siderbar } from "../component/Siderbar/SiderBar"
+import { useState } from "react"
 
 export const Home = () => {
-    const { setUserData } = useUserData()
-    useEffect(() => {
-        const storeUserInfo = localStorage.getItem("userInfo")
-        if (storeUserInfo) {
-            setUserData(JSON.parse(storeUserInfo))
-        }
-    }, [])
+    const [isAdd, setIsAdd] = useState(false)
+    const handleAdd = () => {
+        setIsAdd((pre) => true)
+    }
+    const handleRemove = () => {
+        setIsAdd((pre) => false)
+    }
     return (
         // 页面盒子
         <div className='w-full min-h-screen flex'>
             {/* 登录与收藏 */}
-            <div className='flex w-1/5 justify-end py-10 max-md:hidden'>
-                <div className='backgroundStyle flex flex-col w-9/50 min-w-35  h-9/10 p-8 fixed top-10 '>
-                    <HomeLogin />
-                    <ThemeChange />
-                    <Translation />
-                    <CityCollect />
-                </div>
+            <div className='flex w-1/5 justify-end  max-md:hidden'>
+                <Siderbar />
             </div>
+            <FloatingBall handleAdd={handleAdd} />
+            <Menu handleRemove={handleRemove} isAdd={isAdd} />
+
             {/* 具体天气 */}
-            <div className='w-4/5 max-md:w-full'>
-                <div className='min-w-130 flex flex-col items-center justify-evenly gap-10 p-10'>
-                    <div className='w-full z-20 flex justify-center'>
+            <div className='w-4/5 max-md:w-full z-10'>
+                <div className='min-w-90 flex flex-col items-center justify-evenly gap-10 py-10  z-10'>
+                    <div className='w-full z-10 flex justify-center'>
                         <SearchBox />
                     </div>
                     <div className='w-full z-10 flex justify-center'>
                         <WeatherNow />
                     </div>
-                    <WeatherDay />
-                    <WeatherFuture />
+                    <div className='w-full z-10 flex justify-center'>
+                        <WeatherDay />
+                    </div>
+                    <div className='w-full z-10 flex justify-center'>
+                        <WeatherFuture />
+                    </div>
                 </div>
             </div>
         </div>

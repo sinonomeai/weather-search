@@ -1,10 +1,10 @@
-import { useCityData } from "../../stores/cityName"
+import { useCityData } from "../../stores/cityData"
 import { useWeather } from "../../hooks/useWeather"
 
 import { ConfigProvider, Tooltip } from "antd"
 export const WeatherCard = () => {
-    const {cityData} = useCityData()
-    const { data:weatherData } = useWeather(cityData)
+    const { cityData } = useCityData()
+    const { data: weatherData } = useWeather(cityData)
 
     if (!weatherData) {
         return (
@@ -62,13 +62,14 @@ export const WeatherCard = () => {
             </div>
             {/* 生活指数卡片 */}
             <div className='w-[205px] h-[205px] overflow-hidden grid grid-cols-2 grid-rows-2 gap-1 rounded-3xl'>
-                {suggestions.map((item) => (
+                {suggestions.map((item: any) => (
                     <ConfigProvider
                         tooltip={{
                             unique: true,
-                        }}>
+                        }}
+                        key={item.type}>
                         <Tooltip title={item.text}>
-                            <div key={item.type} className='contentStyle'>
+                            <div className='contentStyle'>
                                 <h1 className='text-[18px]'>{item.name}</h1>
                                 <p>{item.category}</p>
                             </div>

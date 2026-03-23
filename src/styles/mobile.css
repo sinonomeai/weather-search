@@ -1,0 +1,76 @@
+.floating-ball {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 1.5rem;
+    background: var(--card-gradient);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    text-align: center;
+    line-height: 60px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 15;
+    transition: all 0.3s ease;
+}
+
+.floating-ball:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.remove {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 30px;     
+    height: 30px;   
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.remove:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.remove button {
+    cursor: pointer;  
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+}
+.menu-out{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    opacity: 0;
+    background: var(--card-gradient);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 20;
+}
+.menu-in{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    opacity: 1;
+    background: var(--card-gradient);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    z-index: 20;
+}

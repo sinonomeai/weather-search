@@ -1,6 +1,6 @@
 import { Skeleton } from "antd"
 import { useWeather } from "../../hooks/useWeather"
-import { useCityData } from "../../stores/cityName"
+import { useCityData } from "../../stores/cityData"
 import { CityWeather } from "./CityWeather"
 import { WeatherCard } from "./WeatherCard"
 export const WeatherNow = () => {

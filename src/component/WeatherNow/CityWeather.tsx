@@ -1,4 +1,4 @@
-import { useCityData } from "../../stores/cityName"
+import { useCityData } from "../../stores/cityData"
 import { useWeather } from "../../hooks/useWeather"
 
 import { pinyin } from "pinyin-pro"
