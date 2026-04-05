@@ -8,7 +8,7 @@ export const Siderbar = ()=>{
     const {userData} = useUserData()
     const isAdmin = userData?.role === "admin"
     return (
-        <div className='backgroundStyle flex flex-col w-9/50 min-w-38  h-9/10 p-[30px] fixed top-10 overflow-y-auto'>
+        <div className='backgroundStyle flex flex-col w-9/50 min-w-38  h-9/10 p-[30px] max-lg:p-[20px] fixed top-10 overflow-y-auto'>
             <HomeLogin />
             <ThemeChange />
             <Translation />

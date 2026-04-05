@@ -1,20 +1,4 @@
-:root {
-    --font-sans: "Space Grotesk", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    --text-muted: #b4c0d9;
-    color-scheme: light dark;
-    --accent: #8fe0ff;
-    --accent-glow: rgba(143, 224, 255, 0.3);
-    color: rgba(255, 255, 255, 0.87);
-    --text-main: #f3f6ff;
-    --bg-gradient: radial-gradient(circle at top, #2f4b8f, #1d2639);
-    --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+
 .admin-page{
     background: radial-gradient(circle at top left, #2f4b8f, #1d2639, #0f172a);
 }

@@ -4,17 +4,9 @@ import { FloatingBall } from "../component/Siderbar/Mobile/FloatingBall"
 import { WeatherDay } from "../component/WeatherDay/WeatherDay"
 import { WeatherNow } from "../component/WeatherNow/WeatherNow"
 import { WeatherFuture } from "../component/WeatherFuture/WeatherFuture"
-import { Siderbar } from "../component/Siderbar/SiderBar"
-import { useState } from "react"
-
+import { Siderbar } from "../component/Siderbar/Siderbar"
+import { MobileProvider } from "../hooks/useMobile"
 export const Home = () => {
-    const [isAdd, setIsAdd] = useState(false)
-    const handleAdd = () => {
-        setIsAdd((pre) => true)
-    }
-    const handleRemove = () => {
-        setIsAdd((pre) => false)
-    }
     return (
         // 页面盒子
         <div className='w-full min-h-screen flex'>
@@ -22,8 +14,12 @@ export const Home = () => {
             <div className='flex w-1/5 justify-end  max-md:hidden'>
                 <Siderbar />
             </div>
-            <FloatingBall handleAdd={handleAdd} />
-            <Menu handleRemove={handleRemove} isAdd={isAdd} />
+            <MobileProvider>
+                <>
+                    <FloatingBall />
+                    <Menu />
+                </>
+            </MobileProvider>
 
             {/* 具体天气 */}
             <div className='w-4/5 max-md:w-full z-10'>

@@ -19,9 +19,9 @@ const SubmitButton = () => {
 export const Register = () => {
     const navigate = useNavigate()
     const handleAction = async (_prevState: any, formData: FormData) => {
-        const username = formData.get("username")
-        const password = formData.get("password")
-        const confirmPassword = formData.get("confirmPassword")
+        const username = formData.get("username") as string
+        const password = formData.get("password") as string
+        const confirmPassword = formData.get("confirmPassword") as string
         const result = await postUser(username, password, confirmPassword)
         if (result.success) {
             message.success(result.message)
@@ -33,7 +33,7 @@ export const Register = () => {
         }
     }
 
-    const [state, submitAction, isPending] = useActionState(handleAction, null)
+    const [_state, submitAction, _isPending] = useActionState(handleAction, null)
     return (
         <div className='h-screen w-full flex items-center justify-center'>
             {/* 注册框 */}

@@ -4,7 +4,11 @@ import { ThemeChange } from "../ThemeChange"
 import { Translation } from "../Translation"
 import { useUserData } from "../../../stores/userData"
 import { NavLink } from "react-router-dom"
-export const Menu = ({handleRemove,isAdd}) => {
+import { useContext } from "react"
+import { MobileContext } from "../../../hooks/useMobile"
+
+export const Menu = () => {
+     const { handleRemove, isAdd } = useContext(MobileContext)
     const { userData } = useUserData()
     const isAdmin = userData?.role === "admin"
     return (

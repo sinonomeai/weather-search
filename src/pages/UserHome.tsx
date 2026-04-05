@@ -2,7 +2,7 @@ import { SearchBox } from "../component/SearchBox/SearchBox"
 import { WeatherDay } from "../component/WeatherDay/WeatherDay"
 import { WeatherNow } from "../component/WeatherNow/WeatherNow"
 import { WeatherFuture } from "../component/WeatherFuture/WeatherFuture"
-import { Siderbar } from "../component/Siderbar/SiderBar"
+import { Siderbar } from "../component/Siderbar/Siderbar"
 
 export const UserHome = () => {
     return (

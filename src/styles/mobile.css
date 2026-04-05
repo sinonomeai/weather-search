@@ -55,9 +55,7 @@
     right: 0;
     width: 0;
     opacity: 0;
-    background: var(--card-gradient);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 20;
 }
@@ -68,9 +66,8 @@
     right: 0;
     width: 100%;
     opacity: 1;
-    background: var(--card-gradient);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
     transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     z-index: 20;
 }

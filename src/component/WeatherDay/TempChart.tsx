@@ -2,6 +2,7 @@ import { useCityData } from "../../stores/cityData"
 import { useWeather } from "../../hooks/useWeather"
 import { IconFont } from "./IconFont"
 import { Line } from "react-chartjs-2"
+import type { ChartOptions } from 'chart.js' 
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -36,9 +37,9 @@ export const TempChart = () => {
         )
     }
     const dayData = weatherData.forecast24h
-    const labels = dayData.map((item) => `${new Date(item.fxTime).getHours()}:00`)
-    const windSpeed = dayData.map((item) => Number(item.windSpeed))
-    const temps = dayData.map((item) => Number(item.temp))
+    const labels = dayData.map((item:any) => `${new Date(item.fxTime).getHours()}:00`)
+    const windSpeed = dayData.map((item:any) => Number(item.windSpeed))
+    const temps = dayData.map((item:any) => Number(item.temp))
     const data = {
         labels: labels,
         datasets: [
@@ -65,71 +66,71 @@ export const TempChart = () => {
         ],
     }
 
-    const options = {
-        responsive: true, // 自适应容器大小
-        maintainAspectRatio: false, // 宽高比
-        plugins: {
-            tooltip: {
-                enabled: true,
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
-                titleColor: "#fff",
-                bodyColor: "#fff",
-            },
-            legend: {
-                labels: { color: "#b4c0d9" }, //上方标题颜色
-            },
-        },
-        scales: {
-            y: {
-                type: "linear",
-                display: true,
-                position: "left",
-                grid: { color: "rgba(255,255,255,0.1)" },
-                ticks: {
-                    //刻度
-                    callback: (value) => `${value}°C`,
-                    color: "rgba(255,255,255,0.8)",
-                },
-                title: {
-                    //轴标题
-                    display: true,
-                    text: "温度 (°C)",
-                    color: "rgba(255,255,255,0.8)",
-                },
-            },
-            y1: {
-                type: "linear",
-                display: true,
-                position: "right",
-                grid: { drawOnChartArea: false }, // 不绘制网格线
-                ticks: {
-                    callback: (value) => `${value}m/s`,
-                    color: "rgba(255,255,255,0.8)",
-                },
-                title: {
-                    display: true,
-                    text: "风速 (m/s)",
-                    color: "rgba(255,255,255,0.8)",
-                },
-            },
-            x: {
-                // X轴（时间）
-                grid: { display: true },
-                ticks: {
-                    color: "rgba(255, 255, 255, 0.8)",
-                    font: {
-                        size: 16,
-                        lineHeight: 1.5,
-                    },
-                    maxTicksLimit: 24,
-                    autoSkip: false,
-                },
-            },
-        },
-    }
+  const options: ChartOptions<"line"> = {
+      responsive: true, // 自适应容器大小
+      maintainAspectRatio: false, // 宽高比
+      plugins: {
+          tooltip: {
+              enabled: true,
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              titleColor: "#fff",
+              bodyColor: "#fff",
+          },
+          legend: {
+              labels: { color: "#b4c0d9" }, //上方标题颜色
+          },
+      },
+      scales: {
+          y: {
+              type: "linear",
+              display: true,
+              position: "left",
+              grid: { color: "rgba(255,255,255,0.1)" },
+              ticks: {
+                  //刻度
+                  callback: (value: string | number) => `${value}°C`,
+                  color: "rgba(255,255,255,0.8)",
+              },
+              title: {
+                  //轴标题
+                  display: true,
+                  text: "温度 (°C)",
+                  color: "rgba(255,255,255,0.8)",
+              },
+          },
+          y1: {
+              type: "linear",
+              display: true,
+              position: "right",
+              grid: { drawOnChartArea: false }, // 不绘制网格线
+              ticks: {
+                  callback: (value: string | number) => `${value}m/s`,
+                  color: "rgba(255,255,255,0.8)",
+              },
+              title: {
+                  display: true,
+                  text: "风速 (m/s)",
+                  color: "rgba(255,255,255,0.8)",
+              },
+          },
+          x: {
+              // X轴（时间）
+              grid: { display: true },
+              ticks: {
+                  color: "rgba(255, 255, 255, 0.8)",
+                  font: {
+                      size: 16,
+                      lineHeight: 1.5,
+                  },
+                  maxTicksLimit: 24,
+                  autoSkip: false,
+              },
+          },
+      },
+  }
     return (
-        <div className='w-full h-125 overflow-x-auto rounded-xl backdrop-blur-sm'>
-            <div className='w-[1200px] h-115 p-3px]'>
+        <div className='w-full h-[500px] overflow-x-auto rounded-xl backdrop-blur-sm'>
+            <div className='w-[1200px] h-[460px] p-[3px]'>
                 <Line data={data} options={options} />
                 <IconFont />
             </div>

@@ -9,6 +9,7 @@ export const useWeather = (cityName: string) => {
             if("message" in result){
                 throw new Error(result.message)
             }
+            //赋值给query.data
             return result
         },
         enabled: false,

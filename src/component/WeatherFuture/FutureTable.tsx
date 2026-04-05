@@ -27,7 +27,7 @@ export const FutureTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {futureData.map((item) => (
+                    {futureData.map((item:any) => (
                         <tr key={item.fxDate}>
                             <td className='tableTd'>{item.fxDate}</td>
                             <td className='tableTd'>{item.textDay}</td>

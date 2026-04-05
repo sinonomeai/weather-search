@@ -1,10 +1,11 @@
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
+import type { CityInfo } from "../types/City"
 interface User {
     id: string
     role: string
     username: string
-    favourCities: string[]
+    favourCities: CityInfo[]
 }
 interface UserStore {
     userData: User | null

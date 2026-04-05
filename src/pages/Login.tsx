@@ -44,7 +44,7 @@ export const Login = () => {
         }
     }
 
-    const [state, submitAction, isPending] = useActionState(handleAction, null)
+    const [_state, submitAction, _isPending] = useActionState(handleAction, null)
 
     return (
         <div className='h-screen w-full flex items-center justify-center'>
