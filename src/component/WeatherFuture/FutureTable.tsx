@@ -14,8 +14,8 @@ export const FutureTable = () => {
     const futureData = weatherData?.forecast7d
     return (
         <div className='w-full h-80 rounded-xl overflow-auto border border-black/50'>
-            <table className='w-full min-w-[565px] border-collapse rounded'>
-                <thead className='sticky top-0'>
+            <table className='w-full min-w-[565px] border-collapse rounded will-change-transform'>
+                <thead className='sticky top-0 will-change-transform'>
                     <tr>
                         <th className='tableTh'>日期</th>
                         <th className='tableTh'>天气</th>
@@ -27,7 +27,7 @@ export const FutureTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {futureData.map((item:any) => (
+                    {futureData.map((item: any) => (
                         <tr key={item.fxDate}>
                             <td className='tableTd'>{item.fxDate}</td>
                             <td className='tableTd'>{item.textDay}</td>

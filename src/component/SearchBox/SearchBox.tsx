@@ -29,8 +29,8 @@ export const SearchBox = () => {
 
     return (
         <div
-            className='backgroundStyle h-30 w-9/10 flex flex-wrap justify-center items-center  max-md:flex-col max-md:h-36
-    '>
+            className='backgroundStyle h-30 w-9/10 flex flex-wrap justify-center items-center  max-md:flex-col max-md:h-36  will-change-transform
+    '> {/* will-change-transform解决自适应缩放时出现的元素消失问题*/}
             <div className='md:flex-1 flex flex-col justify-center pl-10 w-full max-md:pl-5'>
                 <p className='text-[20px] tracking-[0.1em]'>城市查询</p>
                 <p className='text-[#b4c0d9] text-[14px] '>输入城市或坐标，获取最新天气</p>
