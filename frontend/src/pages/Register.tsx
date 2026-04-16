@@ -1,0 +1,108 @@
+import { Link, useNavigate } from "react-router-dom"
+import { EyeInvisibleOutlined, EyeTwoTone, UserOutlined } from "@ant-design/icons"
+import { Input, message } from "antd"
+import { useActionState } from "react"
+import { useFormStatus } from "react-dom"
+import { postUser } from "../api/User"
+import { useTranslation } from "react-i18next";
+const SubmitButton = () => {
+    const { t } = useTranslation();
+    const { pending } = useFormStatus()
+    return (
+        <button
+            type='submit'
+            className='bg-[linear-gradient(120deg,#8fe0ff,#6f9bff)] text-white font-semibold tracking-wider uppercase w-full rounded-full mt-3 py-2 px-4 hover:opacity-90 transition-opacity cursor-pointer'
+            disabled={pending}>
+            {pending ? t("registerPage-button-loading") : t("registerPage-button")}
+        </button>
+    )
+}
+
+export const Register = () => {
+    const { t } = useTranslation();
+    const navigate = useNavigate()
+    const handleAction = async (_prevState: any, formData: FormData) => {
+        const username = formData.get("username") as string
+        const password = formData.get("password") as string
+        const confirmPassword = formData.get("confirmPassword") as string
+        const result = await postUser(username, password, confirmPassword)
+        if (result.success) {
+            message.success(result.message)
+            navigate("/login")
+            return
+        } else {
+            message.error(result.message)
+            return
+        }
+    }
+
+    const [_state, submitAction, _isPending] = useActionState(handleAction, null)
+    return (
+        <div className='h-screen w-full flex items-center justify-center'>
+            {/* 注册框 */}
+            <div className='backgroundStyle flex flex-col gap-7 items-center justify-center  h-11/20 w-1/4 min-h-[450px] min-w-[350px]'>
+                {/* 标题 */}
+                <h2 className='text-2xl font-bold'>{t("registerPage-title")}</h2>
+
+                {/* 表单部分 */}
+                <form className='w-3/4 flex flex-col gap-3' action={submitAction}>
+                    {/* 用户名输入框 */}
+                    <div className='w-full flex flex-col gap-2'>
+                        <label className='block text-white/70'>{t("registerPage-username")}</label>
+                        <Input
+                            autoFocus
+                            size='large'
+                            placeholder={t("registerPage-usernameInput")}
+                            prefix={<UserOutlined />}
+                            name='username'
+                            required
+                        />
+                    </div>
+
+                    {/* 密码输入框 */}
+                    <div className='w-full flex flex-col gap-2'>
+                        <label className='block text-white/70'>{t("registerPage-password")}</label>
+                        <Input.Password
+                            size='large'
+                            placeholder={t("registerPage-passwordInput")}
+                            prefix={<UserOutlined />}
+                            iconRender={(visible) =>
+                                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                            }
+                            name='password'
+                            autoComplete='new-password'
+                            required
+                        />
+                    </div>
+                    {/* 确认密码输入框 */}
+                    <div className='w-full flex flex-col gap-2'>
+                        <label className='block text-white/70'>{t("registerPage-confirmPassword")}</label>
+                        <Input.Password
+                            size='large'
+                            placeholder={t("registerPage-confirmPasswordInput")}
+                            prefix={<UserOutlined />}
+                            iconRender={(visible) =>
+                                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                            }
+                            name='confirmPassword'
+                            autoComplete='new-password'
+                            required
+                        />
+                    </div>
+
+                    {/* 提交按钮 */}
+                    <SubmitButton />
+                </form>
+
+                {/* 其他链接 */}
+                <div className='flex flex-col gap-3 items-center justify-center w-3/4'>
+                    <Link
+                        to='/login'
+                        className='text-blue-400 hover:text-blue-300 transition-colors'>
+                        <p>{t("registerPage-login")}</p>
+                    </Link>
+                </div>
+            </div>
+        </div>
+    )
+}

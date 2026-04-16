@@ -8,10 +8,16 @@
       "createdAt": "2026-02-15T12:00:00Z",
       "favourCities": [
         {
-          "id": "101040100",
-          "name": "重庆",
+          "id": "101010100",
+          "name": "北京",
           "country": "中国",
-          "addedAt": "2026-03-16T13:01:43.939Z"
+          "addedAt": "2026-04-15T11:28:50.632Z"
+        },
+        {
+          "id": "101030100",
+          "name": "天津",
+          "country": "中国",
+          "addedAt": "2026-04-15T12:10:37.543Z"
         }
       ]
     },
@@ -127,5 +133,6 @@
         }
       ]
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
