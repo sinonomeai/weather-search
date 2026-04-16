@@ -18,6 +18,7 @@ const readData = () => {
 const writeData = (data) => {
     fs_1.default.writeFileSync(dbPath, JSON.stringify(data, null, 2));
 };
+// 移除类型注解，TypeScript 会自动推断
 app.get("/users", (req, res) => {
     const db = readData();
     res.json(db.users);
@@ -40,4 +41,10 @@ app.patch("/users/:id", (req, res) => {
     writeData(db);
     res.json(db.users[userIndex]);
 });
+if (process.env.NODE_ENV !== "production") {
+    const PORT = 3000;
+    app.listen(PORT, () => {
+        console.log(`🚀 Server running at http://localhost:${PORT}`);
+    });
+}
 exports.default = app;
