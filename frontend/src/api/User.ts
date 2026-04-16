@@ -1,6 +1,6 @@
 export const getUser = async (userName: string, password: string) => {
   try {
-    const res = await fetch("http://localhost:3000/users");
+    const res = await fetch("api/users");
     if (!res.ok) throw new Error("网络请求失败");
 
     const users = await res.json();
@@ -52,7 +52,7 @@ export const postUser = async (userName: string, password: string, confirmPasswo
         success: false,
       };
     }
-    const res1 = await fetch("http://localhost:3000/users");
+    const res1 = await fetch("api/users");
     if (!res1.ok) throw new Error("网络请求失败");
     const users = await res1.json();
     if (users.find((u: any) => u.username === userName)) {
