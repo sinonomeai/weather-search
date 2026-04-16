@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import fs from "fs";
 import path from "path";
@@ -19,12 +19,13 @@ const writeData = (data: any): void => {
   fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
 };
 
-app.get("/users", (req, res) => {
+// 添加类型注解 Request, Response
+app.get("/users", (req: Request, res: Response) => {
   const db = readData();
   res.json(db.users);
 });
 
-app.get("/users/:id", (req, res) => {
+app.get("/users/:id", (req: Request, res: Response) => {
   const db = readData();
   const user = db.users.find((u: any) => u.id === req.params.id);
   if (!user) {
@@ -33,7 +34,7 @@ app.get("/users/:id", (req, res) => {
   res.json(user);
 });
 
-app.patch("/users/:id", (req, res) => {
+app.patch("/users/:id", (req: Request, res: Response) => {
   const db = readData();
   const userIndex = db.users.findIndex((u: any) => u.id === req.params.id);
 
