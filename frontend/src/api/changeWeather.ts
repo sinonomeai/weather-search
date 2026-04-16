@@ -15,7 +15,7 @@ interface AddCity {
 }
 export const deleteWeather = async ({ newCities, userId }: DeleteCity) => {
   try {
-    const res = await fetch(`http://localhost:3000/users/${userId}`, {
+    const res = await fetch(`/api/users/${userId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export const deleteWeather = async ({ newCities, userId }: DeleteCity) => {
 };
 export const addWeather = async ({ cityInfo, userId, cities }: AddCity) => {
   try {
-    const res = await fetch(`http://localhost:3000/users/${userId}`, {
+    const res = await fetch(`/api/users/${userId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

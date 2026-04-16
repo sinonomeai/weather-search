@@ -7,6 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
 const dbPath = path.join(process.cwd(), "src", "data", "db.json");
 
 const readData = (): any => {
@@ -44,4 +45,12 @@ app.patch("/users/:id", (req, res) => {
   writeData(db);
   res.json(db.users[userIndex]);
 });
+
+if (process.env.NODE_ENV !== "production") {
+  const PORT = 3000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
+  });
+}
+
 export default app;
