@@ -30,7 +30,7 @@ export const SearchBox = () => {
 
     return (
         <div
-            className='backgroundStyle h-30 w-9/10 flex flex-wrap justify-center items-center  max-md:flex-col max-md:h-36
+            className='backgroundStyle h-30 w-19/20 flex flex-wrap justify-center items-center  max-md:flex-col max-md:h-36
     will-change-transform'>
             <div className='md:flex-1 flex flex-col justify-center pl-10 w-full max-md:pl-5'>
                 <p className='text-[20px] tracking-[0.1em]'>{t("searchBox-title")}</p>

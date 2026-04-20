@@ -2,7 +2,7 @@ import { NavLink, useLocation } from "react-router-dom"
 export const SiderBar = () => {
     const location = useLocation()
     return (
-        <div className='backgroundStyle flex-1 flex flex-col p-[20px]'>
+        <div className='backgroundStyle flex-1 flex flex-col min-w-[300px] p-[30px] overflow-auto'>
             <div className='mb-[20px]'>
                 <div className='admin-logo'>
                     <p>管理后台</p>

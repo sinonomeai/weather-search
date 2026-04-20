@@ -36,8 +36,8 @@ export   const useAddMutation = () => {
                 setUserData(data.user)
             }
         },
-        onError: (data) => {
-            message.error(data.message)
+        onError: (error) => {
+            message.error(error.message)
         },
     })
 }

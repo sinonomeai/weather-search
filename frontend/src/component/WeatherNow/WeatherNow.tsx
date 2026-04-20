@@ -28,7 +28,7 @@ export const WeatherNow = () => {
     }
     return (
         <div
-            className='backgroundStyle min-h-120 w-9/10 p-5 flex gap-5'
+            className='backgroundStyle min-h-120 w-19/20 p-5 flex gap-5'
             style={{
                 background: "var(--card-gradient)",
             }}>

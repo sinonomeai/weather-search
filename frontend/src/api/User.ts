@@ -1,11 +1,12 @@
+
 export const getUser = async (userName: string, password: string) => {
   try {
-    const res = await fetch("api/users");
-    if (!res.ok) throw new Error("网络请求失败");
+    const res1 = await fetch("api/users");
+    if (!res1.ok) throw new Error("网络请求失败");
 
-    const users = await res.json();
+    const users = await res1.json();
     const user = users.find((u: any) => u.username === userName);
-
+    const isAdmin = user?.username === "admin";
     if (!user) {
       return {
         message: "用户不存在",
@@ -18,7 +19,12 @@ export const getUser = async (userName: string, password: string) => {
         success: false,
       };
     }
-    const isAdmin = user.username === "admin";
+    const res2 = await fetch(`/api/users/${user.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lastLoginAt: new Date().toISOString() }),
+    });
+    if (!res2.ok) console.warn("更新登录时间失败");
     return {
       message: isAdmin
         ? "登录成功，欢迎回来管理员（づ￣3￣）づ╭❤️～"
@@ -28,6 +34,8 @@ export const getUser = async (userName: string, password: string) => {
         id: user.id,
         role: user.role,
         username: user.username,
+        createdAt: user.createdAt,
+        lastLoginAt: user.lastLoginAt,
         favourCities: user.favourCities,
       },
     };
@@ -68,11 +76,12 @@ export const postUser = async (userName: string, password: string, confirmPasswo
       };
     }
     const newUser = {
-      id: Date.now().toString(), //使用时间戳作为简单的唯一ID
+      id: crypto.randomUUID(),
       username: userName,
       password: password,
       role: "user",
       createdAt: new Date().toISOString(), //记录创建时间(以ISO格式存储)
+      lastLoginAt: new Date().toISOString(),
       favourCities: [],
     };
     const res2 = await fetch("/api/users", {

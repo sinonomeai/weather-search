@@ -22,7 +22,7 @@ export const WeatherFuture = () => {
         )
     }
     return (
-        <div className='backgroundStyle h-110 w-9/10 p-5'>
+        <div className='backgroundStyle h-110 w-19/20 p-5'>
             <div className='flex flex-col h-full w-full'>
                 <p className='titleFont'>{t("title-future")}</p>
                 <FutureTable />
