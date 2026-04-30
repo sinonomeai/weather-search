@@ -31,7 +31,7 @@ export const SiderBar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to='/' className='admin-nav-back'>
+                        <NavLink to='/1' className='admin-nav-back'>
                             返回前台
                         </NavLink>
                     </li>

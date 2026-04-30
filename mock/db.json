@@ -6,6 +6,7 @@
       "password": "admin",
       "role": "admin",
       "createdAt": "2026-02-15T12:00:00Z",
+      "lastLoginAt": "2026-04-24T04:45:20.325Z",
       "favourCities": [
         {
           "id": "101010100",
@@ -27,6 +28,7 @@
       "password": "7355608",
       "role": "user",
       "createdAt": "2026-02-15T12:00:00Z",
+      "lastLoginAt": "2026-04-20T14:12:13.213Z",
       "favourCities": [
         {
           "id": "101010100",
@@ -54,6 +56,7 @@
       "password": "7355608",
       "role": "user",
       "createdAt": "2026-02-17T16:54:00.235Z",
+      "lastLoginAt": "2026-04-16T09:21:02.931Z",
       "favourCities": [
         {
           "id": "101010100",
@@ -82,54 +85,18 @@
       ]
     },
     {
-      "id": "1772285681233",
+      "id": "XLIRN3nEL3I",
       "username": "yustkina233",
-      "password": "7355608",
+      "password": "Exusiai520",
       "role": "user",
-      "createdAt": "2026-02-28T13:34:41.233Z",
-      "favourCities": [
-        {
-          "id": "101020100",
-          "name": "上海",
-          "country": "中国",
-          "addedAt": "2026-03-10T06:48:58.832Z"
-        },
-        {
-          "id": "101010100",
-          "name": "北京",
-          "country": "中国",
-          "addedAt": "2026-03-10T06:49:07.758Z"
-        }
-      ]
-    },
-    {
-      "id": "1772350187925",
-      "username": "yustkina23355",
-      "password": "7355608",
-      "role": "user",
-      "createdAt": "2026-03-01T07:29:47.925Z",
-      "favourCities": []
-    },
-    {
-      "id": "1772350217414",
-      "username": "yustkina233gs",
-      "password": "aaa",
-      "role": "user",
-      "createdAt": "2026-03-01T07:30:17.414Z",
-      "favourCities": []
-    },
-    {
-      "id": "1773565392795",
-      "username": "yustkinaqwe",
-      "password": "7355608",
-      "role": "user",
-      "createdAt": "2026-03-15T09:03:12.795Z",
+      "createdAt": "2026-04-20T14:02:47.933Z",
+      "lastLoginAt": "2026-04-24T04:43:42.510Z",
       "favourCities": [
         {
           "id": "101010100",
           "name": "北京",
           "country": "中国",
-          "addedAt": "2026-03-15T09:04:54.582Z"
+          "addedAt": "2026-04-20T14:12:53.326Z"
         }
       ]
     }

@@ -6,6 +6,7 @@
       "password": "admin",
       "role": "admin",
       "createdAt": "2026-02-15T12:00:00Z",
+      "lastLoginAt": null,
       "favourCities": [
         {
           "id": "101010100",
@@ -27,6 +28,7 @@
       "password": "7355608",
       "role": "user",
       "createdAt": "2026-02-15T12:00:00Z",
+      "lastLoginAt": null,
       "favourCities": [
         {
           "id": "101010100",
@@ -54,6 +56,7 @@
       "password": "7355608",
       "role": "user",
       "createdAt": "2026-02-17T16:54:00.235Z",
+      "lastLoginAt": null,
       "favourCities": [
         {
           "id": "101010100",
@@ -87,6 +90,7 @@
       "password": "7355608",
       "role": "user",
       "createdAt": "2026-02-28T13:34:41.233Z",
+      "lastLoginAt": null,
       "favourCities": [
         {
           "id": "101020100",
@@ -108,6 +112,7 @@
       "password": "7355608",
       "role": "user",
       "createdAt": "2026-03-01T07:29:47.925Z",
+      "lastLoginAt": null,
       "favourCities": []
     },
     {
@@ -116,6 +121,7 @@
       "password": "aaa",
       "role": "user",
       "createdAt": "2026-03-01T07:30:17.414Z",
+      "lastLoginAt": null,
       "favourCities": []
     },
     {
@@ -124,6 +130,7 @@
       "password": "7355608",
       "role": "user",
       "createdAt": "2026-03-15T09:03:12.795Z",
+      "lastLoginAt": null,
       "favourCities": [
         {
           "id": "101010100",

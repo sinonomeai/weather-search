@@ -3,7 +3,7 @@ import { AdminPage } from "../pages/Admin"
 import { NotFoundPage } from "../pages/NotFoundPage"
 import { Login } from "../pages/Login"
 import { Register } from "../pages/Register"
-import { Home } from "../pages/Home"
+import { RootRouter } from "./RootRouter"
 import { UserHome } from "../pages/UserHome"
 import { Dashboard } from "../component/admin/DashBoard"
 import { Announcements } from "../component/admin/Announcements"
@@ -16,7 +16,7 @@ export const router = () => {
     const routers = [
         {
             path: "/",
-            element: <Home />,
+            element: <RootRouter />,
         },
         {
             path: "/:id",

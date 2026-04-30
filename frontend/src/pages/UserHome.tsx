@@ -24,7 +24,7 @@ export const UserHome = () => {
       {/* 具体天气 */}
       <div className='h-screen w-4/5 max-md:w-full z-10 overflow-y-auto'>
         <div className='min-w-90 flex flex-col items-center justify-evenly gap-10 py-10  z-10'>
-          <div className='w-full z-10 flex justify-center'>
+          <div className='w-full z-15 flex justify-center'>
             <SearchBox />
           </div>
           <div className='w-full z-10 flex justify-center'>

@@ -184,6 +184,7 @@ input:focus {
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
@@ -245,7 +246,6 @@ input:focus {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
-
 }
 
 .lang-toggle:hover {
@@ -255,6 +255,48 @@ input:focus {
 
 .lang-toggle:active {
   transform: scale(0.95);
+}
+/* 毛玻璃效果 */
+.searchingUl {
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  margin-top: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.searchingUl li {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.searchingUl li:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.searchingUl::-webkit-scrollbar {
+  width: 4px;  /* 更窄的宽度 */
+}
+
+.searchingUl::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+.searchingUl::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.searchingUl::-webkit-scrollbar-thumb:hover {
+  background: #777;
 }
 @keyframes spin {
   to {

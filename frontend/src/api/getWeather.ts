@@ -20,8 +20,6 @@ export const getWeather = async (cityName: string) => {
         if (!cityRes.ok) {
             throw new Error("服务器相应错误")
         }
-        console.log(cityRes.status)
-        console.log(cityRes)
         await delay(2000)
         const nameData = await cityRes.json()
               if (!nameData.location || nameData.location.length === 0) {
